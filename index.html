@@ -234,6 +234,47 @@
             text-align: left;
         }
 
+        /* Resume Section */
+        .resume-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .resume-section h3 {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .resume-section p {
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .resume-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .resume-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -344,16 +385,72 @@
             line-height: 1.6;
         }
 
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .project-link {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
         .project-link:hover {
             color: var(--primary-light);
         }
+
+        .youtube-link {
+            color: #ff0000;
+        }
+
+        .youtube-link:hover {
+            color: #cc0000;
+        }
+
+        /* Show More Projects Button */
+        .show-more-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .show-more-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .show-more-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .additional-projects {
+            margin-top: 2rem;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            display: block; /* keep it in DOM, but collapsed */
+            transition: max-height 0.6s ease, opacity 0.6s ease;
+        }
+
+        .additional-projects.show {
+            max-height: 2000px; /* large enough to fit all hidden projects */
+            opacity: 1;
+        }
+
 
         /* YouTube Section */
         .youtube-section {
@@ -692,6 +789,16 @@
                 <p>When I'm not orchestrating deployments or optimizing cloud architectures, you can find me automating workflows with Terraform and Jenkins, exploring new MLOps tools like ZenML and MLflow, or sharing DevOps insights through technical blogs and community discussions on Discord and Hashnode.</p>
             </div>
         </div>
+
+        <!-- Resume Section -->
+        <div class="resume-section fade-in">
+            <h3>📄 Download My Resume</h3>
+            <p>Get a detailed overview of my professional experience, technical skills, and achievements in DevOps and cloud engineering.</p>
+            <a href="https://drive.google.com/file/d/1CMkoPObidM2QqK-YFu8mZ2B51Qlu6Vbw/view?usp=sharing" target="_blank" class="resume-button">
+                📥 Download Resume
+            </a>
+        </div>
+
     </section>
 
     <!-- Skills Section -->
@@ -735,40 +842,137 @@
     <section id="projects" class="section">
         <h2>Featured Projects</h2>
         <div class="projects-grid">
+            <!-- Project 1 -->
             <div class="project-card fade-in">
                 <div class="project-image">
-                    <img src="project1.jpg" alt="E-Commerce Platform" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="placeholder" style="display: none;">🚀</div>
+                    <img src="project1.jpg" alt="CI/CD Pipeline" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display: none; justify-content:center; align-items:center; font-size:2rem;">🚀</div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">E-Commerce Platform</h3>
-                    <p class="project-description">A modern e-commerce solution built with React and Node.js, featuring real-time inventory management and secure payment processing.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <h3 class="project-title">Complete CI/CD Pipeline with Jenkins</h3>
+                    <p class="project-description">
+                        Built a comprehensive CI/CD pipeline using Jenkins, Docker, and Kubernetes 
+                        for automated deployment of microservices applications.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/your-repo-ci-cd" target="_blank" class="project-link btn">💻 View Project Code</a>
+                        <a href="https://www.youtube.com/watch?v=EXAMPLE1" target="_blank" class="project-link btn youtube-link">📺 View Project Tutorial</a>
+                    </div>
                 </div>
             </div>
+
+            <!-- Project 2 -->
             <div class="project-card fade-in">
                 <div class="project-image">
-                    <img src="project2.jpg" alt="Task Management App" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="placeholder" style="display: none;">📱</div>
+                    <img src="project2.jpg" alt="MLOps Platform" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display: none; justify-content:center; align-items:center; font-size:2rem;">🤖</div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Task Management App</h3>
-                    <p class="project-description">A collaborative task management application with real-time updates, built using Vue.js and Firebase for seamless team coordination.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <h3 class="project-title">MLOps Platform with ZenML</h3>
+                    <p class="project-description">
+                        Developed an end-to-end MLOps platform using ZenML, MLflow, and Apache Airflow 
+                        for automated model training and deployment.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/your-repo-mlops" target="_blank" class="project-link btn">💻 View Project Code</a>
+                        <a href="https://www.youtube.com/watch?v=EXAMPLE2" target="_blank" class="project-link btn youtube-link">📺 View Project Tutorial</a>
+                    </div>
                 </div>
             </div>
+
+            <!-- Project 3 -->
             <div class="project-card fade-in">
                 <div class="project-image">
-                    <img src="project3.jpg" alt="Design System" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="placeholder" style="display: none;">🎨</div>
+                    <img src="project3.jpg" alt="Infrastructure as Code" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display: none; justify-content:center; align-items:center; font-size:2rem;">🏗️</div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Design System</h3>
-                    <p class="project-description">A comprehensive design system and component library that streamlines the development process across multiple projects.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <h3 class="project-title">AWS Infrastructure with Terraform</h3>
+                    <p class="project-description">
+                        Automated AWS infrastructure provisioning using Terraform modules 
+                        for scalable, maintainable cloud architecture.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/your-repo-terraform" target="_blank" class="project-link btn">💻 View Project Code</a>
+                        <a href="https://www.youtube.com/watch?v=EXAMPLE3" target="_blank" class="project-link btn youtube-link">📺 View Project Tutorial</a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Show More Projects Button -->
+        <div class="show-more-container">
+            <button class="show-more-btn" onclick="toggleProjects()">Show More Projects</button>
+        </div>
+
+        <!-- Additional Projects (Hidden by default) -->
+        <div class="additional-projects" id="additionalProjects">
+            <div class="projects-grid">
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="project4.jpg" alt="Monitoring Stack" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder" style="display: none; justify-content:center; align-items:center; font-size:2rem;">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Complete Monitoring Stack</h3>
+                        <p class="project-description">
+                            Implemented comprehensive monitoring solution using Prometheus, Grafana, 
+                            and ELK Stack for application and infrastructure monitoring.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/your-repo-monitoring" target="_blank" class="project-link btn">💻 View Project Code</a>
+                            <a href="https://www.youtube.com/watch?v=EXAMPLE4" target="_blank" class="project-link btn youtube-link">📺 View Project Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="project4.jpg" alt="Monitoring Stack" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder" style="display: none; justify-content:center; align-items:center; font-size:2rem;">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Complete Monitoring Stack</h3>
+                        <p class="project-description">
+                            Implemented comprehensive monitoring solution using Prometheus, Grafana, 
+                            and ELK Stack for application and infrastructure monitoring.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/your-repo-monitoring" target="_blank" class="project-link btn">💻 View Project Code</a>
+                            <a href="https://www.youtube.com/watch?v=EXAMPLE4" target="_blank" class="project-link btn youtube-link">📺 View Project Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="project4.jpg" alt="Monitoring Stack" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder" style="display: none; justify-content:center; align-items:center; font-size:2rem;">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Complete Monitoring Stack</h3>
+                        <p class="project-description">
+                            Implemented comprehensive monitoring solution using Prometheus, Grafana, 
+                            and ELK Stack for application and infrastructure monitoring.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/your-repo-monitoring" target="_blank" class="project-link btn">💻 View Project Code</a>
+                            <a href="https://www.youtube.com/watch?v=EXAMPLE4" target="_blank" class="project-link btn youtube-link">📺 View Project Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
         <!-- YouTube Section -->
         <div class="youtube-section fade-in">
@@ -905,6 +1109,20 @@
             }
             lastTouchEnd = now;
         }, false);
+
+        // Show More Projects Toggle
+        function toggleProjects() {
+            const moreProjects = document.getElementById("additionalProjects");
+            const btn = document.querySelector(".show-more-btn");
+
+            if (moreProjects.classList.contains("show")) {
+                moreProjects.classList.remove("show");
+                btn.textContent = "Show More Projects";
+            } else {
+                moreProjects.classList.add("show");
+                btn.textContent = "Show Less Projects";
+            }
+        }
     </script>
 </body>
 </html>
